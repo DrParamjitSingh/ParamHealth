@@ -26,8 +26,6 @@ user_input = st.chat_input("Describe your symptoms here...")
 def get_response(prompt):
     # Here, you may include a more specific prompt or fine-tune the assistant's instructions to provide general remedies
 
-    with st.spinner("Analyzing your symptoms..."):
-        assistant_response = get_response(assistant_prompt)
 
     
     response = client.chat.completions.create(
@@ -46,6 +44,9 @@ if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
         st.markdown(user_input)
+    with st.spinner("Analyzing your symptoms..."):
+        assistant_response = get_response(assistant_prompt)
+
 
     # Generate assistant's response
     assistant_prompt = f"User has reported the following symptoms: {user_input}. Provide a general remedy or advice."

@@ -31,7 +31,8 @@ def get_response(prompt):
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": m["role"], "content": m["content"]}
+            {"role": "system", "content": "You are a health assistant. Only provide general wellness tips and advise the user to consult a doctor for serious or specific symptoms."}
+            #{"role": m["role"], "content": m["content"]}
             for m in st.session_state.messages
         ] + [{"role": "user", "content": prompt}]
     )

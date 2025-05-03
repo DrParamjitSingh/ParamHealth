@@ -7,10 +7,6 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 # Title of the app
 st.title("Health Symptom Checker")
 st.warning("⚠️ This app provides general information only and is not a substitute for professional medical advice, diagnosis, or treatment.")
-with st.spinner("Analyzing your symptoms..."):
-    assistant_response = get_response(assistant_prompt)
-
-
 
 # Initialize session state for chat history
 if "messages" not in st.session_state:
@@ -24,6 +20,8 @@ for message in st.session_state.messages:
 
 # Collect user input for symptoms
 user_input = st.chat_input("Describe your symptoms here...")
+with st.spinner("Analyzing your symptoms..."):
+    assistant_response = get_response(assistant_prompt)
 
 # Function to get a response from OpenAI with health advice
 def get_response(prompt):

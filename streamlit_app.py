@@ -44,13 +44,18 @@ if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
         st.markdown(user_input)
-    with st.spinner("Analyzing your symptoms..."):
-        assistant_response = get_response(assistant_prompt)
+    
 
 
     # Generate assistant's response
     assistant_prompt = f"User has reported the following symptoms: {user_input}. Provide a general remedy or advice."
-    assistant_response = get_response(assistant_prompt)
+    # assistant_response = get_response(assistant_prompt)
+    with st.spinner("Analyzing your symptoms..."):
+        assistant_response = get_response(assistant_prompt)
+
+
+
+    
     st.session_state.messages.append({"role": "assistant", "content": assistant_response})
     
     with st.chat_message("assistant"):

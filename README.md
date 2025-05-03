@@ -1,2 +1,2 @@
-# ParamNew
-A Test Repository by Dr Paramjit
+# ParamHealth
+Repository for Health Symptom System by Dr Paramjit Singh

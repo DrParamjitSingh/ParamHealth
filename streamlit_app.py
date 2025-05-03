@@ -20,12 +20,16 @@ for message in st.session_state.messages:
 
 # Collect user input for symptoms
 user_input = st.chat_input("Describe your symptoms here...")
-with st.spinner("Analyzing your symptoms..."):
-    assistant_response = get_response(assistant_prompt)
+
 
 # Function to get a response from OpenAI with health advice
 def get_response(prompt):
     # Here, you may include a more specific prompt or fine-tune the assistant's instructions to provide general remedies
+
+    with st.spinner("Analyzing your symptoms..."):
+        assistant_response = get_response(assistant_prompt)
+
+    
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
